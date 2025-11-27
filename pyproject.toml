@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "repo2pipe"
+version = "1.0.1"
+description = "CLI-сервис генерации CI/CD pipeline по репозиторию"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+
+authors = [
+  { name = "Артемий Шмонин", email = "amsh004@gmail.com" },
+  { name = "Данила Демидов", email = "andercomand@gmail.com" },
+  { name = "Данила Потапчук", email = "potapchuk01@mail.ru" },
+  { name = "Оксана Тётченко", email = "oksanatetcenko@gmail.com" },
+  { name = "Валерия Цветкова", email = "cvetkovalerocka@gmail.com" }
+]
+
+# зависимости берём из requirements.txt
+dynamic = ["dependencies"]
+
+[project.scripts]
+repo2pipe = "cli:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+# здесь говорим: кроме пакетов, у нас есть отдельные модули в корне src/
+py-modules = [
+  "cli",
+  "settings",
+  "utils",
+  "model",
+  "exception"
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["*"]
+namespaces = false
+
+[tool.setuptools.dynamic]
+dependencies = { file = ["requirements.txt"] }

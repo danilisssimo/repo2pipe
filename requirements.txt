@@ -1,0 +1,6 @@
+fastapi
+click
+GitPython
+uvicorn[standard]
+pydantic
+python-multipart
